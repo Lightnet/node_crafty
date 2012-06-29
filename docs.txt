@@ -1,0 +1,16 @@
+network testing result:
+	Some area are fine for now but it doesn't work well.
+Local Host: work fine.
+Site host: work fine.
+
+To Do List:
+-missing collision and hash map data.
+
+
+
+Credits to:
+
+
+[Resources sprites:]
+http://www.rpgmakervx.net/
+-ship5crsdarius

@@ -1,0 +1,27 @@
+<!DOCTYPE html5>
+<html>
+    <head id="head">
+			<!-- note they have to be in order to able to get the variable load correctly -->
+            <script src="/socket.io/socket.io.js"></script><!-- load socket.io -->
+			<script type="text/javascript">
+				var socket = io.connect(document.location.hostname);
+				
+				socket.on('connect',function() {
+					console.log('Client has connected to the server!');
+					socket.emit('log',{msg:"user connected"});
+				});
+				
+				socket.on('log',function() {
+					console.log('incoming server msg!');
+				});
+				
+				function sendtest(){
+					socket.emit('log',{msg:"user send msg"});
+				}
+			</script>
+    </head>
+	
+    <body>
+		<a href="#" onClick="sendtest();">Send</a>
+    </body>
+</html>

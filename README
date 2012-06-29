@@ -1,0 +1,39 @@
+/*
+ * Created By:Lightnet
+ * 
+ * src link:https://bitbucket.org/Lightnet/node_crafty
+*/
+//===============================================
+// Licence:MIT
+//===============================================
+
+Information: Free to use. It used for simple test build.
+Name changes and files will change without notice. It is
+an alpha build for the phase.
+
+examples folder is test area in stages and other tests.
+
+Controls:
+-A,S,D,W = movement
+
+Main File Server:server.js
+
+require node_modules:
+-install
+--socket.io
+--epxress
+--jade
+
+Client scripts:
+-Craftyjs 0.4.9
+
+//===============================================
+  Credits to:
+//===============================================
+-Craftyjs
+-Express
+-Nodejs
+-Socket.io
+
+
+

@@ -1,0 +1,44 @@
+<!DOCTYPE html5>
+<html>
+    <head id="head">
+			<!-- note they have to be in order to able to get the variable load correctly -->
+            <script src="/socket.io/socket.io.js"></script><!-- load socket.io -->
+			<script type="text/javascript">
+			var hostaddress = "";
+			var imagepath = "";
+			var jspath = "";
+			console.log(document.location.hostname);
+			if(document.location.hostname == ""){
+				jspath= "./";
+				imagepath="/image/";
+			}else {
+				jspath= "/js/";
+				imagepath="/image/";
+			}
+			console.log("imagepath:"+imagepath);
+			//Create script element to load and run it.
+			function loadjs(_jsript){
+				var s_tag = document.createElement('script');
+				s_tag.src = jspath+_jsript;
+				s_tag.type="text/javascript";
+				document.getElementById('head').appendChild(s_tag);
+			}
+			
+			loadjs('crafty.js');
+			loadjs('socketio_client.js');
+			loadjs('game.js');
+			</script><!-- load all scripts -->
+            <style>
+                #cr-stage { border-left-width:0; border-top-width:0} /* IE9 Canvas Fix */
+            </style>
+    </head>
+	
+    <body>
+		<div id="cr-stage"></div>
+		<div id="chat_frame"> 
+		<div id="chat_box" style="width:600px;height:192px;overflow: scroll;"> </div>
+		<input id="chat_input" type="text" onkeypress="typechatpress(event);" />
+		<a href="#" onClick="clickchat();">Send</a>
+		</div>
+    </body>
+</html>

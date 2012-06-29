@@ -1,0 +1,13 @@
+{
+  "name": "nodecrafty",
+  "version": "0.0.1",
+  "dependencies": {
+    "express": "2.5.x",
+	"socket.io":"latest",
+	"cloneextend":"latest",
+	"jade":"latest"
+  },
+  "engines": {
+    "node": "0.6.x"
+  }
+}

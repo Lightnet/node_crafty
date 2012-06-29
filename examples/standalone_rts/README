@@ -1,0 +1,5 @@
+READ ME!
+
+up,down,right,left = move
+f= shoot
+red block is to change char to npc, monster, player

@@ -1,0 +1,43 @@
+<!DOCTYPE html5>
+<html>
+    <head  id="head">
+		<!-- note they have to be in order to able to get the variable load correctly -->
+		<script src="/socket.io/socket.io.js"></script><!-- load socket.io -->
+		<script type="text/javascript">
+			var hostaddress = "";
+			var imagepath = "";
+			var jspath = "";
+
+			if(document.location.hostname == ""){
+				jspath= "../../public/";
+				imagepath="../../image/";
+			}else {
+				jspath= "/js/";
+				imagepath="../../limage/";
+			}
+		
+			function loadjs(_jsript){
+				var s_tag = document.createElement('script');
+				s_tag.src = _jsript;
+				s_tag.type="text/javascript"
+				document.getElementById('head').appendChild(s_tag);
+			}
+			loadjs(jspath+'crafty.js');
+			loadjs('game.js');
+			
+			
+
+            </script><!-- load all scripts -->
+
+            <style>
+                #cr-stage { border-left-width:0; border-top-width:0} /* IE9 Canvas Fix */
+            </style>
+    </head>
+    <body>
+		<div id="cr-stage"></div>
+		<div> <a href="#" onclick="spawnplayer();">Create Player</a> 
+		<a href="#" onclick="ShowMenuNPC();">Show Menu</a> 
+		<a href="#" onclick="HideMenuNPC();">Hide Menu</a> 
+		</div>
+    </body>
+</html>
