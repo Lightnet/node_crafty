@@ -2762,7 +2762,6 @@ Crafty.c("Collision", {
 	* @see .hit
 	*/
 	onHit: function (comp, callback, callbackOff) {
-        console.log('hit');
 		var justHit = false;
 		this.bind("EnterFrame", function () {
 			var hitdata = this.hit(comp);
@@ -4958,7 +4957,7 @@ Crafty.extend({
         /**@
          * #Crafty.viewport.reload
          * @comp Crafty.stage
-         *
+         * 
          * @sign public Crafty.viewport.reload()
          * 
          * Recalculate and reload stage width, height and position.
@@ -5433,7 +5432,7 @@ Crafty.c("Sprite", {
 	* @param y - Y cell position
 	* @param w - Width in cells
 	* @param h - Height in cells
-	*
+	* 
 	* Uses a new location on the sprite map as its sprite.
 	*
 	* Values should be in tiles or cells (not pixels).
@@ -5504,7 +5503,7 @@ Crafty.c("Sprite", {
 * @category Graphics
 * @trigger Draw - when the entity is ready to be drawn to the stage - {type: "canvas", pos, co, ctx}
 * @trigger NoCanvas - if the browser does not support canvas
-*
+* 
 * Draws itself onto a canvas. Crafty.canvas.init() will be automatically called it is not called already (hence the canvas element dosen't exist).
 */
 Crafty.c("Canvas", {

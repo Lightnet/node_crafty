@@ -1,0 +1,12 @@
+{
+"database":
+	{
+	"host":"staff.mongohq.com",
+	"user":"guest",
+	"pass":"guest",
+	"port":"10034",
+	"name":"mmo",
+	"type":"mongo"
+	},
+  "port":"80"
+}

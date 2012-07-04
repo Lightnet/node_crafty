@@ -39,6 +39,10 @@ if(io !=null){
 }
 
 var players = [];
+var npcs = [];
+var monsters = [];
+var objects = [];
+var projectiles = [];
 
 if(socket !=null){
 	//this tell if the server is connected
@@ -58,34 +62,88 @@ if(socket !=null){
 		console.log("THIS ID:"+data['id']);
 	});
 
+	socket.on('char',function(data) {  
+		//console.log('incoming...');
+		//console.log(data);
+		//console.log(data['objid']);
+		
+		if(data['action'] == 'pos'){
+			var bfound = false;
+			for (i in npcs){
+				if(npcs[i].serverid == data['serverid']){
+					npcs[i].x = data['x'];
+					npcs[i].y = data['y'];
+					bfound = true;
+					console.log("found and update position");
+					break;
+				}
+			}
+			
+			if(!bfound){
+				//console.log("added and update position");
+				//console.log(data);
+				var cp = Crafty.e(data['objid']);
+				cp.serverid = data['serverid'];
+				cp.x = data['x'];
+				cp.y = data['y'];
+				npcs.push(cp);
+			}            
+		
+		}
+	});
+	
+	socket.on('eobj',function(data) {
+		//console.log('incoming...');
+		//console.log(data);
+		if(data['action'] == 'pos'){
+			var bfound = false;
+			for (i in objects){
+				if(objects[i].serverid == data['serverid']){
+					objects[i].x = data['x'];
+					objects[i].y = data['y'];
+					bfound = true;
+					//console.log("found and update position");
+					break;
+				}
+			}
+			
+			if(!bfound){
+				//console.log(data['objid']);
+				var cp = Crafty.e(data['objid']);
+				cp.serverid = data['serverid'];
+				cp.x = data['x'];
+				cp.y = data['y'];
+				objects.push(cp);
+			}            
+		
+		}
+	});
+	
 	//update player position from other clients
-	socket.on('position',function(data) {    
+	socket.on('position',function(data) {
+		//console.log(data);
 		if(data !=null){
-			console.log("position");
+			//console.log("position");
 			if(data['id'] !=null){
 				var bfound = false;
 				for (i in players){
 					if(players[i]._id == data['id']){
 						players[i].x = data['x'];
 						players[i].y = data['y'];
-						/*
-						players[i].__newpos.x = data['x'];
-						players[i].__newpos.y = data['y'];
-						*/
 						bfound = true;
-						console.log("found and update position");
+						//console.log("found and update position");
 						break;
 					}
 				}
 				
 				if(!bfound){
-					var cp = Crafty.e("BoxPlayer");
+					var cp = Crafty.e("en_player");
 					cp._id = data['id'];
 					cp.x = data['x'];
 					cp.y = data['y'];
 					players.push(cp);
-					console.log(cp);
-					console.log("added");
+					//console.log(cp);
+					//console.log("added");
 				}            
 			}        
 		}
@@ -105,8 +163,8 @@ if(socket !=null){
 	socket.on('playerleft', function(data) {
 		if(data['id'] !=null){
 			for (i in players){
-				console.log(players[i]);
-				console.log(i);
+				//console.log(players[i]);
+				//console.log(i);
 				if(players[i]._id == data['id']){//_id that we create to make sure it disappear or remove from the scene
 					//console.log("found...");
 					var tmpplayer = players[i];
